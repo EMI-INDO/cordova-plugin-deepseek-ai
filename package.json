@@ -1,0 +1,32 @@
+{
+  "name": "cordova-plugin-deepseek-ai",
+  "version": "0.0.1",
+  "description": "DeepSeek-V3 achieves a significant breakthrough in inference speed over previous models.",
+  "cordova": {
+    "id": "cordova-plugin-deepseek-ai",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EMI-INDO/cordova-plugin-deepseek-ai.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "deepseek",
+    "cordova-deepseek",
+    "cordova-ai",
+    "api",
+    "plugin"
+  ],
+  "author": "EMI INDO",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EMI-INDO/cordova-plugin-deepseek-ai/issues"
+  },
+  "homepage": "https://github.com/EMI-INDO/cordova-plugin-deepseek-ai#readme"
+}

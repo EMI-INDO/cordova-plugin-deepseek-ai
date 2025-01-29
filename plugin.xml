@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-deepseek-ai" version="0.0.1"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Cordova Plugin DeepSeek AI</name>
+    <js-module name="CordovaDeepSeekPlugin" src="www/CordovaDeepSeekPlugin.js">
+        <clobbers target="cordova.plugins.CordovaDeepSeekPlugin" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="CordovaDeepSeekPlugin">
+                <param name="android-package"
+                    value="emi.indo.cordova.plugin.deepseek.ai.CordovaDeepSeekPlugin" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml" />
+        <source-file src="src/android/CordovaDeepSeekPlugin.java"
+            target-dir="src/emi/indo/cordova/plugin/deepseek/ai" />
+    </platform>
+    
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="CordovaDeepSeekPlugin">
+                <param name="ios-package" value="CordovaDeepSeekPlugin" />
+            </feature>
+        </config-file>
+
+        <config-file parent="/*" target="config.xml">
+            <preference name="deployment-target" value="13.0" />
+            <preference name="SwiftVersion" value="5.10" />
+        </config-file>
+        
+        <source-file src="src/ios/CordovaDeepSeekPlugin.h" />
+        <source-file src="src/ios/CordovaDeepSeekPlugin.m" />
+    </platform>
+</plugin>
