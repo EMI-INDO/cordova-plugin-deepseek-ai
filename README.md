@@ -2,7 +2,7 @@
  DeepSeek-V3 achieves a significant breakthrough in inference speed over previous models.
 
  
-<img width="543" alt="cp" src="https://github.com/user-attachments/assets/5ee4a6fd-c705-4031-aaff-a1493d04d91d">
+
 
 
 - Create API KEY: https://platform.deepseek.com
