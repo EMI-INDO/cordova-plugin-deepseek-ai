@@ -17,6 +17,7 @@ cordova plugin add cordova-plugin-deepseek-ai
 npm i cordova-plugin-deepseek-ai
 ```
 
+- NPM: https://www.npmjs.com/package/cordova-plugin-deepseek-ai
 
 ### Plugin methode
 
