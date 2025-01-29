@@ -20,6 +20,7 @@ npm i cordova-plugin-deepseek-ai
 - NPM: https://www.npmjs.com/package/cordova-plugin-deepseek-ai
 
 ### Plugin methode
+- simple example: https://github.com/EMI-INDO/cordova-plugin-deepseek-ai/blob/main/example/index.html
 
 ```
            cordova.plugins.CordovaDeepSeekPlugin.sendRequest({
