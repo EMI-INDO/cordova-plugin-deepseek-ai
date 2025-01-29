@@ -7,9 +7,14 @@
 
 - Create API KEY: https://platform.deepseek.com
 
-- Installation plugin
+- Installation cordova
 ```
 cordova plugin add cordova-plugin-deepseek-ai
+```
+
+- Installation capacitor
+```
+npm i cordova-plugin-deepseek-ai
 ```
 
 
