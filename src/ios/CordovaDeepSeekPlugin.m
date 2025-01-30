@@ -81,6 +81,84 @@
     }];
 }
 
+- (void)sendRequestAdvanced:(CDVInvokedUrlCommand *)command {
+    [self.commandDelegate runInBackground:^{
+        @try {
+            NSDictionary *options = [command.arguments objectAtIndex:0];
+            NSString *apiUrl = options[@"apiUrl"];
+            NSString *apiKey = options[@"apiKey"];
+            NSString *model = options[@"model"];
+            NSArray *messages = options[@"messages"];
+            NSNumber *temperature = options[@"temperature"] ?: @0.7;
+
+            if (!apiUrl.length || !apiKey.length || !model.length || messages.count == 0) {
+                [self sendPluginError:@"Missing required parameters" command:command];
+                return;
+            }
+
+            NSError *error;
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:apiUrl]];
+            [request setHTTPMethod:@"POST"];
+            [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+            [request setValue:[NSString stringWithFormat:@"Bearer %@", apiKey] forHTTPHeaderField:@"Authorization"];
+
+            NSMutableDictionary *requestBody = [@{
+                @"model": model,
+                @"messages": messages,
+                @"temperature": temperature
+            } mutableCopy];
+
+            if (options[@"max_tokens"]) {
+                requestBody[@"max_tokens"] = options[@"max_tokens"];
+            }
+            if (options[@"top_p"]) {
+                requestBody[@"top_p"] = options[@"top_p"];
+            }
+
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:requestBody options:0 error:&error];
+            if (error) {
+                [self sendPluginError:@"JSON serialization error" command:command];
+                return;
+            }
+
+            [request setHTTPBody:jsonData];
+
+            NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                if (error) {
+                    [self sendPluginError:[NSString stringWithFormat:@"Network Error: %@", error.localizedDescription] command:command];
+                    return;
+                }
+
+                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                if (httpResponse.statusCode != 200) {
+                    [self sendPluginError:[NSString stringWithFormat:@"API Error: %ld", (long)httpResponse.statusCode] command:command];
+                    return;
+                }
+
+                NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                if (!jsonResponse) {
+                    [self sendPluginError:@"Invalid API response" command:command];
+                    return;
+                }
+
+                NSString *result = jsonResponse[@"choices"][0][@"message"][@"content"];
+                CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:result];
+                [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+            }];
+
+            [task resume];
+
+        } @catch (NSException *exception) {
+            [self sendPluginError:[NSString stringWithFormat:@"Exception: %@", exception.reason] command:command];
+        }
+    }];
+}
+
+- (void)sendPluginError:(NSString *)errorMessage command:(CDVInvokedUrlCommand *)command {
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:errorMessage];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
 - (void)sendErrorResult:(CDVInvokedUrlCommand*)command message:(NSString*)message {
     CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:message];
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];

@@ -10,5 +10,6 @@
 @interface CordovaDeepSeekPlugin : CDVPlugin
 
 - (void)sendRequest:(CDVInvokedUrlCommand*)command;
+- (void)sendRequestAdvanced:(CDVInvokedUrlCommand*)command;
 
 @end

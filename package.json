@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-deepseek-ai",
-  "version": "0.0.1",
-  "description": "DeepSeek-V3 achieves a significant breakthrough in inference speed over previous models.",
+  "version": "0.0.2",
+  "description": "DeepSeek-V3 or OpenAi achieves a significant breakthrough in inference speed over previous models.",
   "cordova": {
     "id": "cordova-plugin-deepseek-ai",
     "platforms": [
@@ -20,6 +20,8 @@
     "deepseek",
     "cordova-deepseek",
     "cordova-ai",
+    "open-ai",
+    "chat-gpt",
     "api",
     "plugin"
   ],

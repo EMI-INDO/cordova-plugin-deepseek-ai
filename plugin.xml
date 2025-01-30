@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-deepseek-ai" version="0.0.1"
+<plugin id="cordova-plugin-deepseek-ai" version="0.0.2"
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>Cordova Plugin DeepSeek AI</name>
+    <name>Cordova Plugin DeepSeek AI or OpenAI</name>
     <js-module name="CordovaDeepSeekPlugin" src="www/CordovaDeepSeekPlugin.js">
         <clobbers target="cordova.plugins.CordovaDeepSeekPlugin" />
     </js-module>
