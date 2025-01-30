@@ -1,11 +1,15 @@
 # cordova-plugin-deepseek-ai
- DeepSeek-V3 achieves a significant breakthrough in inference speed over previous models.
-
  
 
+ The DeepSeek API uses an API format compatible with OpenAI. By modifying the configuration, you can use the OpenAI SDK or softwares compatible with the OpenAI API to access the DeepSeek API.
+
+ 
+<img width="543" alt="cp" src="https://github.com/user-attachments/assets/31eda0e0-03c2-435b-979f-195e0c747496">
 
 
-- Create API KEY: https://platform.deepseek.com
+
+- DeepSeek Create API KEY: https://platform.deepseek.com
+- OpenAi Create API KEY: https://platform.openai.com
 
 - Installation cordova
 ```
@@ -20,18 +24,25 @@ npm i cordova-plugin-deepseek-ai
 - NPM: https://www.npmjs.com/package/cordova-plugin-deepseek-ai
 
 ### Plugin methode
-- simple example: https://github.com/EMI-INDO/cordova-plugin-deepseek-ai/blob/main/example/index.html
+- sendRequest
+- sendRequestAdvanced
+ 
+- simple example: https://github.com/EMI-INDO/cordova-plugin-deepseek-ai/blob/main/example
 
+
+### sendRequest
 ```
-           cordova.plugins.CordovaDeepSeekPlugin.sendRequest({
 
+          const options = {
            apiUrl: "https://api.deepseek.com/chat/completions", // Replace with the actual API endpoint
            apiKey: "YOUR_API_KEY", // YOUR_API_KEY
            prompt: "hai",
            maxTokens: 100, // 100
            temperature: 0.7, // 0.7
+          }
 
-           }, function(result){
+         cordova.plugins.CordovaDeepSeekPlugin.sendRequest(options,
+           function(result){
 
            console.log(JSON.stringify(result))
 
@@ -41,6 +52,42 @@ npm i cordova-plugin-deepseek-ai
 
            })
 
+
+```
+
+
+### sendRequestAdvanced
+
+```
+var deepseekOptions = {
+        apiUrl: "https://api.deepseek.com/chat/completions", // DeepSeek or OpenAi API request url endpoint
+        apiKey: "YOUR_DEEPSEEK_API_KEY",
+        model: "deepseek-chat",
+        messages: [
+            { role: "system", content: "You are a helpful assistant." },
+            { role: "user", content: "Hello!" }
+        ]
+    };
+
+var openAiOptions = {
+    apiUrl: "https://api.openai.com/v1/chat/completions",
+    apiKey: "sk-your-api-key-here",
+    model: "gpt-4o-mini",
+    messages: [
+        { role: "system", content: "You are a helpful assistant" },
+        { role: "user", content: "Hello!" }
+    ],
+    temperature: 0.7,
+    max_tokens: 500,
+    top_p: 0.9
+};
+
+    cordova.plugins.CordovaDeepSeekPlugin.sendRequestAdvanced(openAiOptions,
+    function(response) {
+       console.log(JSON.stringify(response))
+    }, function(error) {
+       console.error(error)
+    });
 
 ```
 
