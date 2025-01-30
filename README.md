@@ -3,6 +3,8 @@
 
  The DeepSeek API uses an API format compatible with OpenAI. By modifying the configuration, you can use the OpenAI SDK or softwares compatible with the OpenAI API to access the DeepSeek API.
 
+ ### Next release support Gemini API: https://ai.google.dev/gemini-api/docs/downloads
+
 ### Video Test plugin https://youtu.be/iE-qwhvBMac
 
 - simple example: https://github.com/EMI-INDO/cordova-plugin-deepseek-ai/blob/main/example
@@ -130,6 +132,8 @@ whisper
 
 
 ### New feature requests: 
+
+- Next release support Gemini API: https://ai.google.dev/gemini-api/docs/downloads
 
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/emiindo)  
   [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F16NI8H)
