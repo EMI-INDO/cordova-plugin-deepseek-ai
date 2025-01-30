@@ -14,7 +14,7 @@
             const prompt = document.getElementById('prompt').value;
             const maxTokens = parseInt(document.getElementById('maxTokens').value);
             const temperature = parseFloat(document.getElementById('temperature').value);
-            
+
             const options = {
                 apiUrl,
                 apiKey,
@@ -26,7 +26,7 @@
                 maxTokens,
                 temperature
             };
-            
+
             cordova.plugins.CordovaDeepSeekPlugin.sendRequestAdvanced(options, function(result) {
                 document.getElementById('response').value = JSON.stringify(result, null, 2);
             }, function(error) {
@@ -36,31 +36,47 @@
     </script>
 </head>
 <body class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
-        <h2 class="text-xl font-bold text-gray-700 mb-4 text-center">Cordova OpenAi | DeepSeek AI</h2>
-        
-        <label class="block text-sm font-medium text-gray-600">DeepSeek or OpenAi API request url endpoint</label>
-        <input type="text" id="apiUrl" class="w-full p-2 border rounded mb-3" value="https://api.deepseek.com/chat/completions">
-        
-        <label class="block text-sm font-medium text-gray-600">API Key</label>
-        <input type="text" id="apiKey" class="w-full p-2 border rounded mb-3" placeholder="YOUR_API_KEY">
-        
-        <label class="block text-sm font-medium text-gray-600">Model</label>
-        <input type="text" id="model" class="w-full p-2 border rounded mb-3" value="deepseek-chat">
-        
-        <label class="block text-sm font-medium text-gray-600">Prompt</label>
-        <textarea id="prompt" class="w-full p-2 border rounded mb-3 h-24">Hello!</textarea>
-        
-        <label class="block text-sm font-medium text-gray-600">Max Tokens</label>
-        <input type="number" id="maxTokens" class="w-full p-2 border rounded mb-3" value="100">
-        
-        <label class="block text-sm font-medium text-gray-600">Temperature</label>
-        <input type="number" id="temperature" step="0.1" class="w-full p-2 border rounded mb-3" value="0.7">
-        
-        <button onclick="sendRequest()" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Send Request advanced</button>
-        
-        <label class="block text-sm font-medium text-gray-600 mt-4">Response</label>
-        <textarea id="response" class="w-full p-2 border rounded mt-2 bg-gray-200 h-32 text-sm" readonly></textarea>
-    </div>
+<div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+    <h2 class="text-xl font-bold text-gray-700 mb-4 text-center">Cordova OpenAi | DeepSeek AI</h2>
+
+    <label class="block text-sm font-medium text-gray-600">Select API URL</label>
+    <select id="apiUrl" class="w-full p-2 border rounded mb-3">
+        <option value="https://api.deepseek.com/chat/completions">DeepSeek API</option>
+        <option value="https://api.openai.com/v1/chat/completions">OpenAI API</option>
+    </select>
+
+    <label class="block text-sm font-medium text-gray-600">API Key</label>
+    <input type="text" id="apiKey" class="w-full p-2 border rounded mb-3" placeholder="YOUR_API_KEY">
+
+    <label class="block text-sm font-medium text-gray-600">Select AI Model</label>
+    <select id="model" class="w-full p-2 border rounded mb-3">
+        <optgroup label="DeepSeek Models">
+            <option value="deepseek-chat">DeepSeek Chat (V3)</option>
+            <option value="deepseek-reasoner">DeepSeek Reasoner (R1)</option>
+        </optgroup>
+        <optgroup label="OpenAI Models">
+            <option value="gpt-4o">GPT-4o</option>
+            <option value="gpt-4">GPT-4</option>
+            <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+            <option value="codex">Codex</option>
+            <option value="dalle">DALL-E</option>
+            <option value="whisper">Whisper</option>
+        </optgroup>
+    </select>
+
+    <label class="block text-sm font-medium text-gray-600">Prompt</label>
+    <textarea id="prompt" class="w-full p-2 border rounded mb-3 h-24">Hello!</textarea>
+
+    <label class="block text-sm font-medium text-gray-600">Max Tokens</label>
+    <input type="number" id="maxTokens" class="w-full p-2 border rounded mb-3" value="100">
+
+    <label class="block text-sm font-medium text-gray-600">Temperature</label>
+    <input type="number" id="temperature" step="0.1" class="w-full p-2 border rounded mb-3" value="0.7">
+
+    <button onclick="sendRequest()" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Send Request Advanced</button>
+
+    <label class="block text-sm font-medium text-gray-600 mt-4">Response</label>
+    <textarea id="response" class="w-full p-2 border rounded mt-2 bg-gray-200 h-32 text-sm" readonly></textarea>
+</div>
 </body>
 </html>
