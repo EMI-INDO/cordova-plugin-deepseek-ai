@@ -3,6 +3,7 @@
 
  The DeepSeek API uses an API format compatible with OpenAI. By modifying the configuration, you can use the OpenAI SDK or softwares compatible with the OpenAI API to access the DeepSeek API.
 
+### Video Test plugin [https://www.youtube.com/watch?v=iE-qwhvBMac](https://youtu.be/iE-qwhvBMac)
  
 <img width="543" alt="cp" src="https://github.com/user-attachments/assets/31eda0e0-03c2-435b-979f-195e0c747496">
 
