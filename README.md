@@ -94,6 +94,40 @@ var openAiOptions = {
 
 ```
 
+### API URL 
+
+> [!NOTE]  
+> - Add other api url according to your wishes
+- DeepSeek api url:
+```
+https://api.deepseek.com/chat/completions
+```
+- OpenAi api url: 
+```
+https://api.openai.com/v1/chat/completions
+```
+
+### Model
+> [!NOTE]  
+> - Add other models according to your wishes
+
+- DeepSeek Model:
+```
+deepseek-chat
+deepseek-reasoner
+```
+- OpenAi Model: 
+```
+gpt-4o
+gpt-4
+gpt-3.5-turbo
+codex
+dalle
+whisper
+
+```
+
+
 
 ### New feature requests: 
 
